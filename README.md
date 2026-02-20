@@ -1,71 +1,145 @@
-# BackEnd
+# 🧩 CropDoctor Backend Service
 
-## Project Start
+This repository contains the backend API service for the CropDoctor platform.
 
-### Node Version
+The backend is responsible for:
+- User authentication & authorization
+- Image diagnosis request handling
+- Integration with the AI inference service
+- Community & diary management
+- Data persistence and business logic orchestration
 
-`v18.13.0`
+---
 
-<br>
+## 🚀 Overview
 
-### .env
+The backend acts as the core orchestration layer between:
 
+- Frontend client (React)
+- AI inference module (CNN-based classifier)
+- Database (MySQL)
+- Cloud infrastructure (AWS)
+
+It ensures secure communication, structured API responses, and scalable service boundaries.
+
+---
+
+## 🏗 Architecture
+
+### Tech Stack
+
+- **Node.js (v18.13.0)**
+- **NestJS**
+- **MySQL**
+- **JWT Authentication**
+- **AWS Integration (S3, EC2)**
+
+---
+
+## 🔐 Authentication & Security
+
+- JWT-based authentication (Access Token & Refresh Token)
+- Role-based access control (Admin guard)
+- Secure password handling
+- Sensitive data exclusion using serializers
+
+---
+
+## 📦 Core Features
+
+### 1️⃣ AI Diagnosis Integration
+
+- Accept plant image metadata from frontend
+- Forward request to AI inference service
+- Receive classification result
+- Store diagnosis history in database
+- Return structured response to client
+
+---
+
+### 2️⃣ Growth Diary Management
+
+- Create, update, delete crop growth logs
+- Associate diary entries with authenticated users
+- Enable data retrieval and filtering
+
+---
+
+### 3️⃣ Community Board
+
+- Post creation and commenting
+- Ranking logic for popular posts
+- Role-based moderation support
+
+---
+
+### 4️⃣ Admin Dashboard
+
+- Manage plant disease categories
+- Manage nutrient database
+- Control restricted endpoints
+
+---
+
+## 🗄 Database Structure
+
+Key entities include:
+
+- Users
+- Diagnoses
+- Posts
+- Comments
+- Nutrients
+- Categories
+
+Relationships designed to:
+- Maintain referential integrity
+- Support scalable feature expansion
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
 ```
-DB_HOST
-DB_USER
-DB_PASSWORD
-```
+These variables configure database connectivity.
 
-<br>
+⚠️ Do not commit .env files to version control.
 
-### 터미널
+---
 
+🖥 Running the Backend Service
+
+# move into backend directory
 ```
 cd backend
+```
+# install dependencies
+```
 npm install
+```
+# start development server
+```
 npm run start:dev
 ```
 
-<br>
-<br>
-<br>
+---
+## 🎯 Design Considerations
+- Clear separation between AI inference and business logic
+- Modular service architecture
+- Role-based access control
+- Cloud deployment compatibility
+- Scalable API structure
 
-# 인공지능 웹 서비스 프로젝트
+---
+👨‍💻 Author
 
-# 💡 프로젝트 기획서
+Jin Lee
+AI-focused Software Engineer
 
-## 서비스 개요📝
 
-**주제**: 작물을 키우는 사람들을 위한 작물 관리 플랫폼
-
-**소개**: 우리 서비스는 식물을 키우는 사람들이 식물의 질병을 파악하고 적절한 해결책을 찾을 수 있도록 도와주는 플랫폼입니다. 사용자가 식물의 질병 관련 이미지를 업로드하면, 서비스는 해당 질병을 분석하여 해결책을 제공합니다. 또한, 작물 성장일지를 작성하고 정보를 공유할 수 있는 커뮤니티 기능과 식물 판매, 식물 도감 기능도 제공합니다.
-
-## 서비스 설명
-
-**서비스 기획 의도🎯**
-: 최근 작물을 키우는 사람들이 급증하면서, 작물의 질병과 해결책에 대한 정보를 찾는 것이 어렵다는 문제가 있습니다. 이러한 문제를 해결하고, 작물을 키우는 사람들의 불편을 덜어주기 위해 우리는 이 서비스를 기획하게 되었습니다.
-
-**메인 기능🚀**
-
-- 사용자의 작물이 가지고 있는 질병 관련 이미지 업로드, 해당 이미지를 토대로 **이미지 분석**을 통해 **질병을 파악한 후 해결책을 제공**.
-- 사용자가 **작물 성장일지**를 작성하고 관리할 수 있도록 도와주며, 사용자 간 정보 공유를 통해 작물을 보다 효과적으로 관리하고 성장시키는 기능을 제공합니다.
-
-**서브 기능**
-
-- 정보 공유 커뮤니티
-- 마이페이지
-
-**추가 서브 기능:**
-영양제 판매(쇼핑몰)
-
-**사용 설명서**📖
-
-1. 식물의 질병 파악 및 해결책 제공
-
-- 사용자는 식물의 질병 관련 이미지를 업로드합니다.
-- 서비스는 해당 이미지를 분석하여 질병을 파악하고, 적절한 해결책을 제공합니다.
-
-2. 작물 성장일지 작성
-
-- 사용자는 작물의 성장 상황을 기록하고, 성장일지를 작성할 수 있습니다.
-- 다른 사용자들과 작물의 성장 정보를 공유할 수 있습니다.
